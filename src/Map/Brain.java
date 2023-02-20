@@ -13,6 +13,9 @@ public class Brain implements Runnable{
     ArrayList<Entity> qentities;
     ArrayList<Visual> visuals;
     ArrayList<Visual> qvisuals;
+    Map map;
+    Window window;
+    Player player;
     public Brain(){
         fpsCounter = new Thread(() -> {
             while (true) {
@@ -21,7 +24,8 @@ public class Brain implements Runnable{
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                if (fpsCount < 58) System.out.println(fpsCount);
+                if (fpsCount < 58)
+                    System.out.println(fpsCount);
                 fpsCount = 0;
             }
         });
@@ -31,7 +35,10 @@ public class Brain implements Runnable{
         qentities = new ArrayList<>();
         visuals = new ArrayList<>();
         qvisuals = new ArrayList<>();
-
+        player = new Player(8, 50, 50);
+        map = new Map(this, player);
+        window = new Window(this);
+        new Thread(this).start();
     }
 
 
@@ -72,7 +79,7 @@ public class Brain implements Runnable{
     }
 
     public void paint(){
-
+        map.repaint();
     }
 
 }
