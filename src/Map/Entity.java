@@ -16,12 +16,11 @@ public class Entity {
     public boolean left;
     public boolean right;
     public boolean alive;
-    public int selected;
 
     public ArrayList<Power> powers;
     ArrayList<BufferedImage> sprites;
     int selectedImg;
-    public Entity(double speed, int x, int y) {
+    public Entity(double speed, double x, double y) {
         alive = true;
         this.defspeedx = Map.WIDTH_WORLD/speed;
         this.defspeedy = Map.HEIGHT_WORLD/speed;
@@ -33,7 +32,6 @@ public class Entity {
 
         sprites = new ArrayList<>();
         powers = new ArrayList<>();
-        selected = 0;
         selectedImg = 0;
     }
 

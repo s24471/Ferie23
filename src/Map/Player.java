@@ -11,9 +11,11 @@ public class Player extends Entity {
     public static PlayerMouseListener playerMouseListener;
     public int screenX;
     public int screenY;
+    public int selected;
 
     public Player(int speed, int x, int y) {
         super(speed, x, y);
+        selected = 0;
         playerKeyListener = new PlayerKeyListener();
         playerKeyListener.setPlayer(this);
         playerMouseListener = new PlayerMouseListener();
@@ -25,6 +27,8 @@ public class Player extends Entity {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        powers.add(new Dash(180, this));
+        powers.add(new Dash(180, this));
     }
 
     @Override

@@ -7,9 +7,12 @@ import java.io.FileReader;
 import java.util.Scanner;
 
 public class Map extends JPanel {
-    public static int SIZE = 64;
-    public static int WIDTH_SCREEN = 30;
-    public static int HEIGHT_SCREEN = 16;
+    public static final int DEF_SIZE = 64;
+    public static int SIZE = DEF_SIZE;
+    public static final int DEF_WIDTH_SCREEN = 30;
+    public static int WIDTH_SCREEN = DEF_WIDTH_SCREEN;
+    public static final int DEF_HEIGHT_SCREEN = 15;
+    public static int HEIGHT_SCREEN = DEF_HEIGHT_SCREEN;
     public static final int WIDTH_MAP = 50;
     public static final int HEIGHT_MAP = 30;
     public static int WIDTH_WORLD = SIZE*WIDTH_MAP;
@@ -28,6 +31,7 @@ public class Map extends JPanel {
         this.setDoubleBuffered(true);
         this.addKeyListener(Player.playerKeyListener);
         this.addMouseListener(Player.playerMouseListener);
+        this.addMouseWheelListener(Player.playerMouseListener);
         MAP = new Tile[HEIGHT_MAP][WIDTH_MAP];
         try {
             Scanner scanner = new Scanner(new FileReader("src/Map/mapa.txt"));
@@ -57,18 +61,18 @@ public class Map extends JPanel {
         for(Entity entity: brain.entities){
             entity.draw((Graphics2D) g);
         }
-        for(Visual visual: brain.visuals){
+        for(Visual visual: Brain.visuals){
             visual.draw((Graphics2D) g);
         }
 
         for(int i=0; i<brain.player.powers.size(); i++){
-            g.drawImage(brain.player.powers.get(i).getIcon(), i*(SIZE+SIZE/3+GAP), HEIGHT_SCREEN *(SIZE-1), SIZE, SIZE, null);
+            g.drawImage(brain.player.powers.get(i).getIcon(), i*(DEF_SIZE + DEF_SIZE /3+GAP),DEF_HEIGHT_SCREEN *(DEF_SIZE-1), DEF_SIZE, DEF_SIZE, null);
             g.setColor(Color.white);
             float progress = brain.player.powers.get(i).getProgress();
-            g.fillRect(i*(SIZE+SIZE/3+GAP)+SIZE, HEIGHT_SCREEN *(SIZE-1)+SIZE - (int)(SIZE*progress) , SIZE/3, (int)(SIZE*progress));
+            g.fillRect(i*(DEF_SIZE+DEF_SIZE/3+GAP)+DEF_SIZE, DEF_HEIGHT_SCREEN *(DEF_SIZE-1)+DEF_SIZE - (int)(DEF_SIZE*progress) , DEF_SIZE/3, (int)(DEF_SIZE*progress));
             if(brain.player.selected == i){
                 g.setColor(Color.BLUE);
-                g.drawRect(i*(SIZE+SIZE/3+GAP), HEIGHT_SCREEN *(SIZE-1), SIZE, SIZE);
+                g.drawRect(i*(DEF_SIZE+DEF_SIZE/3+GAP), DEF_HEIGHT_SCREEN *(DEF_SIZE-1), DEF_SIZE, DEF_SIZE);
             }
         }
     }

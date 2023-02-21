@@ -11,7 +11,7 @@ public class Brain implements Runnable{
     boolean alive;
     ArrayList<Entity> entities;
     ArrayList<Entity> qentities;
-    ArrayList<Visual> visuals;
+    static ArrayList<Visual> visuals;
     ArrayList<Visual> qvisuals;
     Map map;
     Window window;

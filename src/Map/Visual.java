@@ -16,10 +16,10 @@ public class Visual {
     public ArrayList<BufferedImage> sprites;
     int height;
     int width;
-    public Visual(int x, int y, String path, Directions direction, int amount, int time, int loop){
+    public Visual(double x, double y, String path, Directions direction, int amount, int time, int loop){
         this(x, y, path, direction, amount, time, loop, Map.SIZE, Map.SIZE);
     }
-    public Visual(int x, int y, String path, Directions direction, int amount, int time, int loop, int height, int width){
+    public Visual(double x, double y, String path, Directions direction, int amount, int time, int loop, int height, int width){
         this.direction = direction;
         this.x = x;
         this.y = y;
@@ -42,21 +42,6 @@ public class Visual {
             }
         }
     }
-
-    public void update(){
-        curr--;
-        if(curr<0){
-            curr = time;
-            selected++;
-        }
-        if(selected>=sprites.size()){
-            if(loop>0) {
-                loop--;
-                selected = 0;
-            }
-            else alive = false;
-        }
-    }
     public void draw(Graphics2D g){
         curr--;
         if(curr<0){
@@ -73,8 +58,7 @@ public class Visual {
                 return;
             }
         }
-
-        g.drawImage(sprites.get(selected), (int)(x*Map.SIZE-Map.player.x+Map.player.screenX) , (int)(y*Map.SIZE-Map.player.y+Map.player.screenY), width, height, null);
+        g.drawImage(sprites.get(selected),(int)(x-Map.player.x+Map.player.screenX), (int)(y-Map.player.y+Map.player.screenY), Map.SIZE, Map.SIZE, null);
     }
 
     public static BufferedImage rotate(BufferedImage tmp, Directions d) {

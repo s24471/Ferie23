@@ -68,8 +68,8 @@ public class Tile {
         if(
             x*Map.SIZE +Map.SIZE> Map.player.x - Map.player.screenX &&
             x*Map.SIZE -Map.SIZE< Map.player.x + Map.player.screenX &&
-            y*Map.SIZE +Map.SIZE> Map.player.y - Map.player.screenY &&
-            y*Map.SIZE -Map.SIZE< Map.player.y + Map.player.screenY
+            y*Map.SIZE +2*Map.SIZE> Map.player.y - Map.player.screenY &&
+            y*Map.SIZE -2*Map.SIZE< Map.player.y + Map.player.screenY
         )
         g.drawImage(sprites[type].get(selected), (int)(x*Map.SIZE-Map.player.x+Map.player.screenX), (int)(y*Map.SIZE-Map.player.y+Map.player.screenY), Map.SIZE, Map.SIZE, null);
     }
