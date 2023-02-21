@@ -5,9 +5,12 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Entity {
-    public double speed;
-    public int x;
-    public int y;
+    public double defspeedx;
+    public double defspeedy;
+    public double speedx;
+    public double speedy;
+    public double x;
+    public double y;
     public boolean up;
     public boolean down;
     public boolean left;
@@ -20,7 +23,11 @@ public class Entity {
     int selectedImg;
     public Entity(double speed, int x, int y) {
         alive = true;
-        this.speed = speed;
+        this.defspeedx = Map.WIDTH_WORLD/speed;
+        this.defspeedy = Map.HEIGHT_WORLD/speed;
+        this.speedx = Map.WIDTH_WORLD/defspeedx;
+        this.speedy = Map.HEIGHT_WORLD/defspeedy;
+
         this.x = x;
         this.y = y;
 
@@ -36,7 +43,10 @@ public class Entity {
         }
     }
 
-    public void draw(Graphics2D g){}
+    public void draw(Graphics2D g){
+
+        //x*Map.SIZE-Map.player.x+(Map.WIDTH_SCREEN*Map.SIZE-1)/2 - Map.SIZE/2 , y*Map.SIZE-Map.player.y+(Map.HEIGHT_SCREEN*Map.SIZE-1)/2 - Map.SIZE/2, Map.SIZE, Map.SIZE, null);
+    }
 
     public static Directions getDirection(Entity entity){
         Directions direction;

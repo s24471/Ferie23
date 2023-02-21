@@ -9,6 +9,8 @@ import java.util.ArrayList;
 public class Player extends Entity {
     public static PlayerKeyListener playerKeyListener;
     public static PlayerMouseListener playerMouseListener;
+    public int screenX;
+    public int screenY;
 
     public Player(int speed, int x, int y) {
         super(speed, x, y);
@@ -16,7 +18,8 @@ public class Player extends Entity {
         playerKeyListener.setPlayer(this);
         playerMouseListener = new PlayerMouseListener();
         playerMouseListener.setPlayer(this);
-
+        screenX = (Map.WIDTH_SCREEN*Map.SIZE-1)/2 - Map.SIZE/2;
+        screenY = (Map.HEIGHT_SCREEN*Map.SIZE-1)/2 - Map.SIZE/2;
         try {
             sprites.add(ImageIO.read(getClass().getResource("/Player/0.png")));
         } catch (IOException e) {
@@ -31,30 +34,29 @@ public class Player extends Entity {
             playerMouseListener.used = false;
             powers.get(selected).use();
         }
-        double tmp = speed;
         if (down && (left || right)) {
-            y += tmp * 0.707;
+            y += speedy * 0.707;
         } else if (down) {
-            y += tmp;
+            y += speedy;
         }
 
         if (up && (left || right)) {
-            y -= tmp * 0.707;
+            y -= speedy * 0.707;
         } else if (up) {
-            y -= tmp;
+            y -= speedy;
         }
 
         if (left && (up || down)) {
-            x -= tmp * 0.707;
+            x -= speedx * 0.707;
         } else if (left) {
-            x -= tmp;
+            x -= speedx;
         }
 
         if (right && (up || down)) {
 
-            x += tmp * 0.707;
+            x += speedx * 0.707;
         } else if (right) {
-            x += tmp;
+            x += speedx;
         }
     }
 
@@ -69,7 +71,7 @@ public class Player extends Entity {
             case LEFT_DOWN, RIGHT_UP -> tmp = Visual.rotateImageByDegrees(tmp, 315);
             case UP -> tmp = Visual.rotateImageByDegrees(tmp, 270);
         }
-        g.drawImage(tmp, (Map.WIDTH_SCREEN*Map.SIZE-1)/2 - Map.SIZE/2, (Map.HEIGHT_SCREEN*Map.SIZE-1)/2 - Map.SIZE/2, Map.SIZE, Map.SIZE, null);
+        g.drawImage(tmp, screenX, screenY, Map.SIZE, Map.SIZE, null);
     }
     static class PlayerKeyListener implements KeyListener {
         public Player player;
@@ -78,44 +80,47 @@ public class Player extends Entity {
             this.player = player;
         }
 
-        public void keyTyped(KeyEvent e){
+        public void keyTyped(KeyEvent e) {
 
         }
 
         @Override
         public void keyPressed(KeyEvent e) {
             int keyCode = e.getKeyCode();
-            switch (keyCode){
-                case KeyEvent.VK_W:
-                    player.up = true;
-                    break;
-                case KeyEvent.VK_S:
-                    player.down = true;
-                    break;
-                case KeyEvent.VK_A:
-                    player.left = true;
-                    break;
-                case KeyEvent.VK_D:
-                    player.right = true;
-                    break;
+            if (keyCode == KeyEvent.VK_W) {
+                player.up = true;
+            }
+            if (keyCode == KeyEvent.VK_S) {
+                player.down = true;
+            }
+            if (keyCode == KeyEvent.VK_A) {
+                player.left = true;
+            }
+            if (keyCode == KeyEvent.VK_D) {
+                player.right = true;
+            }
+            if (keyCode == KeyEvent.VK_UP) {
+                Map.zoomInOut(1);
+            }
+            if (keyCode == KeyEvent.VK_DOWN) {
+                Map.zoomInOut(-1);
             }
         }
+
         @Override
         public void keyReleased(KeyEvent e) {
             int keyCode = e.getKeyCode();
-            switch (keyCode){
-                case KeyEvent.VK_W:
-                    player.up = false;
-                    break;
-                case KeyEvent.VK_S:
-                    player.down = false;
-                    break;
-                case KeyEvent.VK_A:
-                    player.left = false;
-                    break;
-                case KeyEvent.VK_D:
-                    player.right = false;
-                    break;
+            if (keyCode == KeyEvent.VK_W) {
+                player.up = false;
+            }
+            if (keyCode == KeyEvent.VK_S) {
+                player.down = false;
+            }
+            if (keyCode == KeyEvent.VK_A) {
+                player.left = false;
+            }
+            if (keyCode == KeyEvent.VK_D) {
+                player.right = false;
             }
         }
     }

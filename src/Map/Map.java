@@ -7,11 +7,13 @@ import java.io.FileReader;
 import java.util.Scanner;
 
 public class Map extends JPanel {
-    public static final int SIZE = 64;
-    public static final int WIDTH_SCREEN = 30;
-    public static final int HEIGHT_SCREEN = 16;
+    public static int SIZE = 64;
+    public static int WIDTH_SCREEN = 30;
+    public static int HEIGHT_SCREEN = 16;
     public static final int WIDTH_MAP = 50;
     public static final int HEIGHT_MAP = 30;
+    public static int WIDTH_WORLD = SIZE*WIDTH_MAP;
+    public static int HEIGHT_WORLD = SIZE*HEIGHT_MAP;
     public static final int GAP = 8;
     public static Tile[][] MAP;
     Brain brain;
@@ -70,5 +72,17 @@ public class Map extends JPanel {
             }
         }
     }
-
+    public static void zoomInOut(int n){
+        int tmpx = SIZE*WIDTH_MAP;
+        int tmpy = SIZE*HEIGHT_MAP;
+        SIZE += n;
+        int tmpx2 = SIZE*WIDTH_MAP;
+        int tmpy2 = SIZE*HEIGHT_MAP;
+        double multix = (double)tmpx2/tmpx;
+        double multiy = (double)tmpy2/tmpy;
+        player.x*=multix;
+        player.y*=multiy;
+        player.speedx = (double)tmpx2/player.defspeedx;
+        player.speedy = (double)tmpy2/player.defspeedy;
+    }
 }

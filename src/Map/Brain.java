@@ -35,7 +35,7 @@ public class Brain implements Runnable{
         qentities = new ArrayList<>();
         visuals = new ArrayList<>();
         qvisuals = new ArrayList<>();
-        player = new Player(8, 50, 50);
+        player = new Player(8, Map.SIZE*Map.WIDTH_MAP/2, Map.SIZE*Map.HEIGHT_MAP/2);
         entities.add(player);
         map = new Map(this, player);
         window = new Window(this);

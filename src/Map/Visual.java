@@ -9,7 +9,8 @@ import java.util.ArrayList;
 public class Visual {
 
 
-    int x, y, loop, time, curr, selected;
+    double x, y;
+    int loop, time, curr, selected;
     boolean alive;
     Directions direction;
     public ArrayList<BufferedImage> sprites;
@@ -72,7 +73,8 @@ public class Visual {
                 return;
             }
         }
-        g.drawImage(sprites.get(selected), x, y, width, height, null);
+
+        g.drawImage(sprites.get(selected), (int)(x*Map.SIZE-Map.player.x+Map.player.screenX) , (int)(y*Map.SIZE-Map.player.y+Map.player.screenY), width, height, null);
     }
 
     public static BufferedImage rotate(BufferedImage tmp, Directions d) {
