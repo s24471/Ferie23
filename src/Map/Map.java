@@ -46,6 +46,11 @@ public class Map extends JPanel {
         g.setColor(Color.RED);
         //for(Entity e: brain.entities)g.fillRect(e.x, e.y, SIZE, SIZE);
 
+        for (int i = 0; i < HEIGHT_MAP; i++) {
+            for (int j = 0; j < WIDTH_MAP; j++) {
+                MAP[i][j].draw((Graphics2D) g);
+            }
+        }
         player.draw((Graphics2D) g);
         for(Entity entity: brain.entities){
             entity.draw((Graphics2D) g);
