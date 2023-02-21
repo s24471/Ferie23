@@ -65,7 +65,7 @@ public class Tile {
         if(selected>=sprites[type].size()){
             selected = 0;
         }
-        g.drawImage(sprites[type].get(selected), x*Map.SIZE, y*Map.SIZE, Map.SIZE, Map.SIZE, null);
+        g.drawImage(sprites[type].get(selected), x*Map.SIZE-Map.player.x+(Map.WIDTH_SCREEN*Map.SIZE-1)/2 - Map.SIZE/2 , y*Map.SIZE-Map.player.y+(Map.HEIGHT_SCREEN*Map.SIZE-1)/2 - Map.SIZE/2, Map.SIZE, Map.SIZE, null);
     }
 
 }

@@ -15,7 +15,7 @@ public class Map extends JPanel {
     public static final int GAP = 8;
     public static Tile[][] MAP;
     Brain brain;
-    Player player;
+    public static Player player;
 
     public Map(Brain brain, Player player){
         this.brain = brain;

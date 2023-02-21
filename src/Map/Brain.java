@@ -36,6 +36,7 @@ public class Brain implements Runnable{
         visuals = new ArrayList<>();
         qvisuals = new ArrayList<>();
         player = new Player(8, 50, 50);
+        entities.add(player);
         map = new Map(this, player);
         window = new Window(this);
         new Thread(this).start();
