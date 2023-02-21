@@ -23,7 +23,7 @@ public class Player extends Entity {
         screenX = (Map.WIDTH_SCREEN*Map.SIZE-1)/2 - Map.SIZE/2;
         screenY = (Map.HEIGHT_SCREEN*Map.SIZE-1)/2 - Map.SIZE/2;
         try {
-            sprites.add(ImageIO.read(getClass().getResource("/Player/(0).png")));
+            sprites.add(ImageIO.read(getClass().getResource("/Player/(1).png")));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

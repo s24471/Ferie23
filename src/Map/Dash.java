@@ -8,8 +8,8 @@ public class Dash extends Power{
     public Dash(int cooldown, Entity entity) {
         super(cooldown, entity);
         try {
-            iconActive = (ImageIO.read(getClass().getResource("/Dash/0.png")));
-            iconInactive = (ImageIO.read(getClass().getResource("/Dash/1.png")));
+            iconActive = (ImageIO.read(getClass().getResource("/Dash/(1).png")));
+            iconInactive = (ImageIO.read(getClass().getResource("/Dash/(2).png")));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
