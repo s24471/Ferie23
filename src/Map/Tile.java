@@ -25,7 +25,7 @@ public class Tile {
         selected = 0;
         curr=0;
         type =0;
-        time = (int)(Math.random()*120)+120;
+        time = (int)(Math.random()*1000)+360;
 
     }
 
