@@ -12,9 +12,11 @@ public class Player extends Entity {
     public int screenX;
     public int screenY;
     public int selected;
+    static public int zoomIn;
 
     public Player(int speed, int x, int y) {
         super(speed, x, y);
+        zoomIn =0;
         selected = 0;
         playerKeyListener = new PlayerKeyListener();
         playerKeyListener.setPlayer(this);
@@ -34,6 +36,8 @@ public class Player extends Entity {
     @Override
     public void update() {
         super.update();
+        if(zoomIn>0)Map.zoomInOut(1);
+        if(zoomIn<0)Map.zoomInOut(-1);
         if (playerMouseListener.used) {
             playerMouseListener.used = false;
             powers.get(selected).use();
@@ -104,10 +108,10 @@ public class Player extends Entity {
                 player.right = true;
             }
             if (keyCode == KeyEvent.VK_UP) {
-                Map.zoomInOut(1);
+                zoomIn = 1;
             }
             if (keyCode == KeyEvent.VK_DOWN) {
-                Map.zoomInOut(-1);
+                zoomIn = -1;
             }
         }
 
@@ -125,6 +129,12 @@ public class Player extends Entity {
             }
             if (keyCode == KeyEvent.VK_D) {
                 player.right = false;
+            }
+            if (keyCode == KeyEvent.VK_UP) {
+                zoomIn = 0;
+            }
+            if (keyCode == KeyEvent.VK_DOWN) {
+                zoomIn = 0;
             }
         }
     }

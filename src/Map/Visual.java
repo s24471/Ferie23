@@ -33,7 +33,7 @@ public class Visual {
         alive = true;
         for (int i = 1; i <= amount; i++) {
             try {
-                System.out.println(path+"(" + i + ").png");
+                //System.out.println(path+"(" + i + ").png");
                 BufferedImage tmp = ImageIO.read(getClass().getResource(path+"(" + i + ").png"));
 
                 sprites.add(rotate(tmp, direction));
