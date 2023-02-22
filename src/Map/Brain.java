@@ -24,6 +24,7 @@ public class Brain implements Runnable{
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
+                if (fpsCount < 58)
                     System.out.println(fpsCount);
                 fpsCount = 0;
             }
