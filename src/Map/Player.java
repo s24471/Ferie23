@@ -113,6 +113,9 @@ public class Player extends Entity {
             if (keyCode == KeyEvent.VK_DOWN) {
                 zoomIn = -1;
             }
+            if(keyCode == KeyEvent.VK_G){
+                Brain.change = true;
+            }
         }
 
         @Override
@@ -136,6 +139,7 @@ public class Player extends Entity {
             if (keyCode == KeyEvent.VK_DOWN) {
                 zoomIn = 0;
             }
+
         }
     }
     static class PlayerMouseListener extends MouseAdapter {

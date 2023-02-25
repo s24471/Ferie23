@@ -1,4 +1,5 @@
 package Map;
+import Arena.Arena;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,10 +14,12 @@ public class Brain implements Runnable{
     ArrayList<Entity> qentities;
     static ArrayList<Visual> visuals;
     ArrayList<Visual> qvisuals;
-    Map map;
-    Window window;
+    public Map map;
+    public Window window;
+    static public boolean change;
     Player player;
     public Brain(){
+        change = false;
         fpsCounter = new Thread(() -> {
             while (true) {
                 try {
@@ -51,6 +54,9 @@ public class Brain implements Runnable{
         fpsCounter.start();
 
         while (alive) {
+            if(change){
+                change();
+            }
             update();
             fpsCount++;
             paint();
@@ -64,6 +70,10 @@ public class Brain implements Runnable{
             }
             nextFPS += interval;
         }
+    }
+    public void change(){
+        change = false;
+        window.change();
     }
 
     public void update(){
