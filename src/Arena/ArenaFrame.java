@@ -1,5 +1,7 @@
 package Arena;
 
+import Map.Tile;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -26,10 +28,12 @@ public class ArenaFrame extends JPanel {
             for (int j = 0; j < width; j++) {
                 Tile tile = new Tile(i, j);
                 tile.setOpaque(true);
+                //TODO: 01.03.2023 podmienic na sprites
                 if ((i + j) % 2 == 0) {
-                    tile.setColor(Color.YELLOW);
+
+//                    tile.setColor(Color.YELLOW);
                 } else {
-                    tile.setColor(Color.ORANGE);
+//                    tile.setColor(Color.ORANGE);
                 }
                 panel.add(tile);
             }

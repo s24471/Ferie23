@@ -1,12 +1,13 @@
 package Map;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Tile {
+public class Tile extends JLabel {
 
     static public ArrayList<BufferedImage>[] sprites = new ArrayList[3];
     int y;
@@ -16,7 +17,7 @@ public class Tile {
     int selected;
     int time;
     int type;
-
+    
 
 
     public Tile(int y, int x) {
