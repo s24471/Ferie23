@@ -23,15 +23,15 @@ public class Window extends JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        arenaFrame = new ArenaFrame();
-        arena = new Arena(arenaFrame, brain);
     }
 
     public void change(){
         changer = !changer;
         if(changer) {
+            arenaFrame = new ArenaFrame();
             this.remove(map);
             this.add(arenaFrame);
+            arena = new Arena(arenaFrame, brain);
             arenaFrame.requestFocusInWindow();
             this.pack();
             this.setVisible(true);

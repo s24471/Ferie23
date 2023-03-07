@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
 public class Brain implements Runnable{
-    final int FPS = 60;
+    public static final int FPS = 60;
     Thread fpsCounter;
     int fpsCount;
     boolean alive;

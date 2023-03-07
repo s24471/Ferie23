@@ -14,18 +14,32 @@ public class Arena implements Runnable{
         change = false;
     }
 
-    public void run(){
-        while(!change){
-            //twoja gierka
-            try {
-                TimeUnit.MILLISECONDS.sleep(10);
-                //System.out.println("B");
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+    public void run() {
+        double interval = (double) 1000000000 / Brain.FPS;
+        double nextFPS = System.nanoTime() + interval;
+        while (!change) {
+            update();
+            paint();
+            double left = nextFPS - System.nanoTime();
+            if (left > 0) {
+                try {
+                    TimeUnit.NANOSECONDS.sleep((long) (left));
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
+            nextFPS += interval;
         }
-        change=false;
+
+        change = false;
         brain.window.change();
     }
+    public void update() {
+
+    }
+    public void paint() {
+        arenaFrame.repaint();
+    }
+
 
 }
