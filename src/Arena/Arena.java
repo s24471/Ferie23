@@ -4,7 +4,7 @@ import Map.Brain;
 
 import java.util.concurrent.TimeUnit;
 
-public class Arena{
+public class Arena implements Runnable{
     public static boolean change;
     ArenaFrame arenaFrame;
     Brain brain;
