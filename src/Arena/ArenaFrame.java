@@ -7,8 +7,9 @@ import java.awt.*;
 import static Map.Map.*;
 
 public class ArenaFrame extends JPanel {
-    private final int width = 8;
-    private final int height = 8;
+    private final int width = 16;
+    final int SIZE = 120;
+    private final int height = 7;
     Tile[][] tiles;
 
     ArenaKeyListener arenaKeyListener;
@@ -35,12 +36,13 @@ public class ArenaFrame extends JPanel {
         super.paintComponent(g);
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                System.out.println("===");
+/*                System.out.println("===");
                 System.out.println(WIDTH_SCREEN/width*i);
                 System.out.println(HEIGHT_SCREEN/height*j);
                 System.out.println(WIDTH_SCREEN/width);
-                System.out.println(HEIGHT_SCREEN/height);
-                g.drawImage(tiles[i][j].draw(),DEF_WIDTH_SCREEN*DEF_SIZE/width*i,DEF_HEIGHT_SCREEN*DEF_SIZE/height*j,WIDTH_SCREEN*DEF_SIZE/width,HEIGHT_SCREEN*DEF_SIZE/height,null);
+                System.out.println(HEIGHT_SCREEN/height);*/
+                //g.drawImage(tiles[i][j].draw(),DEF_WIDTH_SCREEN*DEF_SIZE/width*i,DEF_HEIGHT_SCREEN*DEF_SIZE/height*j,WIDTH_SCREEN*DEF_SIZE/width,HEIGHT_SCREEN*DEF_SIZE/height,null);
+                g.drawImage(tiles[i][j].draw(),SIZE*j, SIZE*i, SIZE, SIZE,null);
             }
         }
     }
